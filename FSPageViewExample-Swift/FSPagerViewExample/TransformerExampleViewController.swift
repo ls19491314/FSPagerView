@@ -23,6 +23,7 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
                                                                       .cubic]
     fileprivate var typeIndex = 0 {
         didSet {
+            pagerView.scrollDirection = .vertical
             let type = self.transformerTypes[typeIndex]
             self.pagerView.transformer = FSPagerViewTransformer(type:type)
             switch type {
@@ -57,6 +58,7 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        //pagerView.itemSize = CGSize(width: view.bounds.width, height: <#T##CGFloat#>)
         let index = self.typeIndex
         self.typeIndex = index // Manually trigger didSet
     }

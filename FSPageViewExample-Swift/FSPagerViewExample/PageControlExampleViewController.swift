@@ -62,6 +62,10 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
     fileprivate var alignmentIndex = 0 {
         didSet {
             self.pageControl.contentHorizontalAlignment = [.right,.center,.left][self.alignmentIndex]
+            pagerView.itemSize = CGSize(width: pagerView.bounds.width-40, height: pagerView.bounds.height)
+            pagerView.reloadData()
+            pagerView.automaticSlidingInterval = 2
+            pagerView.interitemSpacing = 20
         }
     }
     
@@ -217,7 +221,8 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
     
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.image = UIImage(named: self.imageNames[index])
+       // cell.imageView?.image = UIImage(named: self.imageNames[index])
+        cell.imageView?.backgroundColor = .red
         cell.imageView?.contentMode = .scaleAspectFill
         return cell
     }
